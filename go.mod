@@ -1,5 +1,5 @@
-module github.com/euskadi31/go-tokenizer
+module github.com/marcelocorreia/go-tokenizer
 
-go 1.12
+go 1.13
 
 require github.com/stretchr/testify v1.5.1
