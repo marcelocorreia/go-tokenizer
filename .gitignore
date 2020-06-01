@@ -1,0 +1,8 @@
+.DS_Store
+*.out
+
+vendor/
+coverage/
+
+*.swp
+*.iml
