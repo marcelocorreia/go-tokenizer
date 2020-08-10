@@ -5,6 +5,9 @@
 package tokenizer
 
 import (
+	"fmt"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -37,6 +40,19 @@ func TestTokenizerWithKeepingSeparator(t *testing.T) {
 
 func TestConvertSeparator(t *testing.T) {
 	assert.Equal(t, [256]uint8{'\t': 1, '\n': 1, ' ': 1}, convertSeparator("\t\n "))
+}
+
+func Test3D(t *testing.T) {
+	tok := New()
+		p :="/Volumes/m/3d"
+
+
+	filepath.Walk(p, func(path string, info os.FileInfo, err error) error {
+
+		fmt.Println(tok.Tokenize(path))
+		return nil
+	})
+
 }
 
 func BenchmarkTokenizer(b *testing.B) {

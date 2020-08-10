@@ -4,10 +4,17 @@
 
 package tokenizer
 
+import (
+	"fmt"
+	"os"
+	"path/filepath"
+)
+
 // Tokenizer interface
 type Tokenizer interface {
 	KeepSeparator()
 	Tokenize(content string) []string
+	FilesList(dir string) ([]string, error)
 }
 
 type tokenizer struct {
@@ -18,7 +25,7 @@ type tokenizer struct {
 // New Tokenizer
 func New() Tokenizer {
 	return &tokenizer{
-		sep: convertSeparator("\t\n\r ,.:?\"!;()+_=-"),
+		sep: convertSeparator("/\t\n\r ,.:?\"!;()+_=-"),
 	}
 }
 
@@ -88,4 +95,15 @@ func convertSeparator(sep string) [256]uint8 {
 	}
 
 	return separators
+}
+
+func (t tokenizer) FilesList(dir string) ([]string, error) {
+	var files []string
+	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		files = append(files, path)
+		fmt.Println(path)
+		return nil
+	})
+
+	return files, err
 }
