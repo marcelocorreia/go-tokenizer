@@ -12,7 +12,7 @@ Text Tokenizer for Golang ![Last release](https://img.shields.io/github/release/
 import (
     "fmt"
 
-    "github.com/euskadi31/go-tokenizer"
+    "github.com/marcelocorreia/go-tokenizer"
 )
 
 func main() {
