@@ -22,6 +22,5 @@ cover: test
 bench:
 	@go test -benchmem -bench=. ./...
 
-
 tidy:
 	go mod tidy
